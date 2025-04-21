@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Insights Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="dashboard">
+    <h1 class="title">Insights Dashboard</h1>
+
+    <div class="cards">
+      <div class="card">
+        <p class="label">Total Users</p>
+        <p class="value">2,480</p>
+      </div>
+      <div class="card">
+        <p class="label">Monthly Growth</p>
+        <p class="value">+12.4%</p>
+      </div>
+      <div class="card">
+        <p class="label">Revenue</p>
+        <p class="value">$8,320</p>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <h2 class="subtitle">Monthly Trend</h2>
+      <canvas id="trendChart" height="100"></canvas>
+    </div>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('trendChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        datasets: [{
+          label: 'Users',
+          data: [400, 800, 600, 900, 750, 1100],
+          borderColor: '#007bff',
+          backgroundColor: 'rgba(0,123,255,0.1)',
+          fill: true,
+          tension: 0.4
+        }]
+      },
+      options: {
+        plugins: {
+          legend: { display: false }
+        },
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
